@@ -1,0 +1,30 @@
+{% extends "cliente_base.html" %}
+{% load crispy_forms_tags %}
+{% block page_title %} 
+
+{% if cliente.pk %}
+        Editar tarefa 
+       {% else %}
+        Nova tarefa 
+  {% endif %}
+
+{% endblock page_title %}
+
+{% block content %}
+
+  {% if cliente.pk %}
+       <h1> Editar tarefa </h1>
+       {% else %}
+       <h1> Novo Cliente </h1>
+  {% endif %}
+
+    <form method="POST">
+      {% csrf_token %}
+      
+      {{ form | crispy }}
+      <button type="submit" class="btn btn-secondary">Salvar</button>
+
+{% endblock content %}
+
+
+    

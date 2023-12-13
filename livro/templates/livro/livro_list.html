@@ -1,0 +1,49 @@
+{% extends "livro_base.html" %}
+
+
+{% block page_title %}Livros{% endblock page_title %}Livros
+
+ {% block content %}
+ 
+ <h1>Lista de Livros Cadastrados</h1>
+
+ {% if livro_list %}
+ <table class="table">
+     <thead>
+     <tr>
+         <th scope="col">#</th>
+         <th scope="col">Nome</th>
+         <th scope="col">Editora</th>
+         <th scope="col">Ano</th>
+         <th scope="col">Ações</th>
+     </tr>
+     </thead>
+     <tbody>
+         {% for livro in livro_list %}
+                 <tr>
+                     <th scope="row">{{livro.pk}}</th>
+                     <td>{{ livro.nome }}</td>
+                     <td>{{ livro.editora }}</td>
+                     <td>{{ livro.ano }}</td>
+                     <td>
+                         <a href="{% url "livro_update" pk=livro.pk %}" 
+                         class="btn btn-secondary btn-sm ">Editar
+                        </a>
+                         <a href="{% url "livro_delete" pk=livro.pk %}" 
+                         class="btn btn-danger btn-sm">Excluir
+                        </a>
+
+                     </td>
+                 </tr>
+         {% endfor %}
+     
+     </tbody>
+ </table>
+{% else %}
+ <p>Não há livros cadastradas</p>
+{% endif %}
+
+<a href="{% url "livro_create" %}" class="btn btn-secondary">Cadastrar novo Livro</a>
+ 
+ {% endblock  %}
+    

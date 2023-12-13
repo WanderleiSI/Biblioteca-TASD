@@ -1,0 +1,49 @@
+{% extends "cliente_base.html" %}
+
+
+{% block page_title %}Clientes{% endblock page_title %}Clientes
+
+ {% block content %}
+ 
+ <h1>Lista de Clientes Cadastrados</h1>
+
+ {% if cliente_list %}
+ <table class="table">
+     <thead>
+     <tr>
+         <th scope="col">#</th>
+         <th scope="col">Nome</th>
+         <th scope="col">CPF</th>
+         <th scope="col">Email</th>
+         <th scope="col">Ações</th>
+     </tr>
+     </thead>
+     <tbody>
+         {% for cliente in cliente_list %}
+                 <tr>
+                     <th scope="row">{{cliente.pk}}</th>
+                     <td>{{ cliente.nome }}</td>
+                     <td>{{ cliente.cpf }}</td>
+                     <td>{{ cliente.email }}</td>
+                     <td>
+                         <a href="{% url "cliente_update" pk=cliente.pk %}" 
+                         class="btn btn-secondary btn-sm ">Editar
+                        </a>
+                         <a href="{% url "cliente_delete" pk=cliente.pk %}" 
+                         class="btn btn-danger btn-sm">Excluir
+                        </a>
+
+                     </td>
+                 </tr>
+         {% endfor %}
+     
+     </tbody>
+ </table>
+{% else %}
+ <p>Não há clientes cadastradas</p>
+{% endif %}
+
+<a href="{% url "cliente_create" %}" class="btn btn-secondary">Cadastrar novo Cliente</a>
+ 
+ {% endblock  %}
+    
