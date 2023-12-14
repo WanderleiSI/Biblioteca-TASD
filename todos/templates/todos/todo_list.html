@@ -12,8 +12,10 @@
  <table class="table">
      <thead>
      <tr>
-         <th scope="col">#</th>
+         <th scope="col">Nº</th>
          <th scope="col">Título</th>
+         <th scope="col">CPF</th>
+         <th scope="col">Livro</th>
          <th scope="col">Criado em</th>
          <th scope="col">Data de entrega</th>
          <th scope="col">Data final</th>
@@ -25,6 +27,8 @@
                  <tr>
                      <th scope="row">{{todo.pk}}</th>
                      <td>{{ todo.title }}</td>
+                     <td>{{ todo.cliente.id }}</td>
+                     <td>{{ todo.livro.id }}</td>
                      <td>{{ todo.created_at }}</td>
                      <td>{{ todo.deadline }}</td>
                      <td>{{ todo.finished|default:"-" }}</td>
