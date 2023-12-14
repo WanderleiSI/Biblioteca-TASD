@@ -10,8 +10,8 @@ class Todo(models.Model):
     cliente = models.ForeignKey(Cliente, verbose_name="Cpf cliente", on_delete=models.CASCADE)
     livro = models.ForeignKey(Livro, verbose_name="Livro", on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True, null=False, blank=False)
-    deadline = models.DateField(verbose_name="Data inicial", null=False, blank=False)
-    finished = models.DateField(verbose_name="Data final", null=True)
+    deadline = models.DateField(verbose_name="Data final", null=False, blank=False)
+    finished = models.DateField(verbose_name="Entregue em", null=True)
     # finished = models.DateTimeField(verbose_name="Data final",null=True)
 
     class Meta:

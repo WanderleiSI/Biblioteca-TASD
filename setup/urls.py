@@ -26,6 +26,7 @@ from livro.views import (
 )
 
 urlpatterns = [
+    path('', TodoListView.as_view(), name="todo_list"),
     #EMPRESTIMO
     path("admin/", admin.site.urls),
     path("principal_todo", TodoListView.as_view(), name="todo_list"),
