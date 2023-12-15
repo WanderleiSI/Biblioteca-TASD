@@ -20,6 +20,7 @@
          <th scope="col">Devolução</th>
          <th scope="col">Entregue em</th>
          <th scope="col">Ações</th>
+         <th scope="col">Notificado</th>
      </tr>
      </thead>
      <tbody>
@@ -42,7 +43,15 @@
                          <a href="{% url "todo_delete" pk=todo.pk %}" 
                          class="btn btn-danger btn-sm">Excluir
                         </a>
-
+                        <a href="{% url 'todo_email' pk=todo.pk %}" class="btn btn-info btn-sm {% if todo.finished %}disabled{% endif %}" style="color:white;">
+                            Notificar
+                        </a>
+                     </td>
+                     <td>{% if todo.notified %}
+                            {{ "Sim" }}
+                         {% else %}
+                            {{ "Não" }}
+                         {% endif %}
                      </td>
                  </tr>
          {% endfor %}

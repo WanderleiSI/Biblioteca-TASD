@@ -25,6 +25,10 @@ from livro.views import (
     LivroCompleteView,
 )
 
+from envia_email.views import (
+    EnvEmailView,
+)
+
 urlpatterns = [
     path('', TodoListView.as_view(), name="todo_list"),
     #EMPRESTIMO
@@ -46,5 +50,6 @@ urlpatterns = [
     path("update_livro/<int:pk>", LivroUpdateView.as_view(), name="livro_update"),
     path("delete_livro/<int:pk>", LivroDeleteView.as_view(), name="livro_delete"),
     path("complete_livro/<int:pk>", LivroCompleteView.as_view(), name="livro_complete"),
-    
+    #EMAIL
+    path("email_todo/<int:pk>", EnvEmailView.as_view(), name="todo_email"),
 ]
