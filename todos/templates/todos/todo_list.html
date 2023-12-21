@@ -6,17 +6,21 @@
  {% block content %}
  
  <h1>Lista de Empréstimos</h1>
+ 
 
  {% if todo_list %}
  <table class="table">
      <thead>
      <tr>
-         <th scope="col">#</th>
+         <th scope="col">Nº</th>
          <th scope="col">Título</th>
+         <th scope="col">CPF</th>
+         <th scope="col">Livro</th>
          <th scope="col">Criado em</th>
-         <th scope="col">Data de entrega</th>
-         <th scope="col">Data final</th>
+         <th scope="col">Devolução</th>
+         <th scope="col">Entregue em</th>
          <th scope="col">Ações</th>
+         <th scope="col">Notificado</th>
      </tr>
      </thead>
      <tbody>
@@ -24,6 +28,8 @@
                  <tr>
                      <th scope="row">{{todo.pk}}</th>
                      <td>{{ todo.title }}</td>
+                     <td>{{ todo.cliente.id }}</td>
+                     <td>{{ todo.livro.id }}</td>
                      <td>{{ todo.created_at }}</td>
                      <td>{{ todo.deadline }}</td>
                      <td>{{ todo.finished|default:"-" }}</td>
@@ -37,7 +43,15 @@
                          <a href="{% url "todo_delete" pk=todo.pk %}" 
                          class="btn btn-danger btn-sm">Excluir
                         </a>
-
+                        <a href="{% url 'todo_email' pk=todo.pk %}" class="btn btn-info btn-sm {% if todo.finished %}disabled{% endif %}" style="color:white;">
+                            Notificar
+                        </a>
+                     </td>
+                     <td>{% if todo.notified %}
+                            {{ "Sim" }}
+                         {% else %}
+                            {{ "Não" }}
+                         {% endif %}
                      </td>
                  </tr>
          {% endfor %}
@@ -48,7 +62,7 @@
  <p>Não há tarefas cadastradas</p>
 {% endif %}
 
-<a href="{% url "todo_create" %}" class="btn btn-secondary">Cadastrar novo livro</a>
+<a href="{% url "todo_create" %}" class="btn btn-secondary">Novo empréstimo</a>
  
  {% endblock  %}
     
