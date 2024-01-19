@@ -19,7 +19,7 @@ SECRET_KEY = (
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 #Add do ip da instancia da AWS EC2, o padrão é a lista vazia
-ALLOWED_HOSTS = ["15.229.14.109"]
+ALLOWED_HOSTS = ["*"]
 
 DJANGO_APPS = [
     "django.contrib.admin",
